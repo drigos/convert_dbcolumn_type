@@ -1,0 +1,23 @@
+Algoritmo
+
+ 1) Criar a extensão "uuid-ossp"
+ 2) Criar VIEWS de suporte
+ 3) Armazenar informações das tabelas que usam SERIAL
+ *) Para cada tabela
+ 4)    Armazenar informação das tabelas dependentes
+ 5)    Criar coluna "uuid" com valores gerados automaticamente
+ 6)    Remover primary key da coluna "id"
+ 7)    Adicionar primary key na coluna "uuid"
+ *)    Para cada tabela dependente
+ 8)       Criar coluna *_uuid
+ 9)       Atualizar valores na coluna *_uuid baseado na coluna *_id
+10)       Encontrar configurações adicionais na coluna *_id
+11)       Remover coluna *_id
+12)       Renomear coluna *_uuid para *_id
+13)       Adicionar chave estrangeira a nova coluna *_id
+14)       Aplicar configurações adicionais encontradas sobre a coluna *_id
+15)    Remover a coluna "id"
+16)    Alterar o nome da coluna "uuid" para "id"
+17) Armazenar geradores de sequência que ainda não foram removidos
+ *) Para cada gerador de sequência
+18)    Remover todos geradores de sequência
